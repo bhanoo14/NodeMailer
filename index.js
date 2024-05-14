@@ -40,3 +40,30 @@ app.get("/", (req, res) => {
 app.listen(3000, () => {
     console.log("Server is running @: 3000");
 });
+
+
+
+const authXy = nodeMailer.createTransport({
+    service: "gmail",
+    secure: true,
+    port: 465,
+    userdata : {
+        user: "151mc00003@gmail.com",
+        password: "edtb iplu pzpg uvao"
+    }
+})
+
+const myXmail = {
+    from: "151mc00003@gmail.com",
+    to: "bhanoolohar007@gmail.com",
+    subject: "this is just test mail",
+    message: "Hello Bhaanoo I am from another your account just testing the Nodemailer functionality of Gmail"
+}
+
+authXy.sendMail(myXmail, (error, info) =>{
+    if(error){
+        console.log("Something went wrong in mailing", error);
+        throw new Error.message()
+    }
+    console.log("Mail Send", info);
+})
